@@ -1,7 +1,17 @@
 .detail {
-  text-align: left;
+  text-align: center;
+  background-color: white;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .detail img {
   width: 100%;
+}
+
+.detail p {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-bottom: 0.5rem;
 }

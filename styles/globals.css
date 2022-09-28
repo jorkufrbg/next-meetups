@@ -2,11 +2,13 @@
 
 * {
   box-sizing: border-box;
+  transition: all .5s ease;
 }
 
 body {
   font-family: "Open Sans", "Lato", sans-serif;
   margin: 0;
+  background-color: #fee9b1;
 }
 
 h1,

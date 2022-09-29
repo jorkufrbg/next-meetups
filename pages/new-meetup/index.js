@@ -31,7 +31,7 @@ const NewMeetupPage = () => {
           content="Add your own meetups and create amazing networking opportunities"
         />
       </Head>
-      <NewMeetupForm onAddMeetup={addMeetupHandler} />;
+      <NewMeetupForm onAddMeetup={addMeetupHandler} />
     </Fragment>
   );
 };

@@ -1,21 +1,27 @@
 import { useRef } from 'react';
-
+import { AppProps } from '../../types/index';
 import Card from '../ui/Card';
 import classes from './NewMeetupForm.module.css';
 
-function NewMeetupForm(props) {
-  const titleInputRef = useRef();
-  const imageInputRef = useRef();
-  const addressInputRef = useRef();
-  const descriptionInputRef = useRef();
+type NewMeetupFormProps = {
+  onAddMeetup(meetupData: { title: string | undefined; image: string | undefined; address: string | undefined; description: string | undefined; }): void;
+}
 
-  function submitHandler(event) {
+type OnAddMeetupProps = AppProps & NewMeetupFormProps;
+
+function NewMeetupForm(props: OnAddMeetupProps) {
+  const titleInputRef = useRef<HTMLInputElement>(null);
+  const imageInputRef = useRef<HTMLInputElement>(null);
+  const addressInputRef = useRef<HTMLInputElement>(null);
+  const descriptionInputRef = useRef<HTMLTextAreaElement>(null);
+
+  function submitHandler(event: React.SyntheticEvent) {
     event.preventDefault();
 
-    const enteredTitle = titleInputRef.current.value;
-    const enteredImage = imageInputRef.current.value;
-    const enteredAddress = addressInputRef.current.value;
-    const enteredDescription = descriptionInputRef.current.value;
+    const enteredTitle = titleInputRef.current?.value;
+    const enteredImage = imageInputRef.current?.value;
+    const enteredAddress = addressInputRef.current?.value;
+    const enteredDescription = descriptionInputRef.current?.value;
 
     const meetupData = {
       title: enteredTitle,
@@ -47,7 +53,7 @@ function NewMeetupForm(props) {
           <textarea
             id='description'
             required
-            rows='5'
+            rows={5}
             ref={descriptionInputRef}
           ></textarea>
         </div>

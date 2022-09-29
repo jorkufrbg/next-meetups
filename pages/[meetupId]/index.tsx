@@ -4,7 +4,10 @@ import Head from "next/head";
 
 import MeetupDetail from "../../components/meetups/MeetupDetail";
 
-const MeetupDetails = (props) => {
+type MeetupDetailProps = { meetupData: { title: string; description: string; image: string; address: string; } }
+
+
+const MeetupDetails = (props: MeetupDetailProps) => {
   return (
     <Fragment>
       <Head>
@@ -28,7 +31,7 @@ export const getStaticPaths = async () => {
   const db = client.db();
 
   const meetupsCollection = db.collection("meetups");
-  const meetups = await meetupsCollection.find({}, { _id: 1 }).toArray();
+  const meetups = await meetupsCollection.find({}, { projection: { _id: 1 } }).toArray();
 
   client.close();
 
@@ -40,7 +43,7 @@ export const getStaticPaths = async () => {
   };
 };
 
-export const getStaticProps = async (context) => {
+export const getStaticProps = async (context: { params: { meetupId: string; }; }) => {
   const meetupId = context.params.meetupId;
   console.log(meetupId);
 
@@ -51,7 +54,7 @@ export const getStaticProps = async (context) => {
 
   const meetupsCollection = db.collection("meetups");
   const selectedMeetup = await meetupsCollection.findOne({
-    _id: ObjectId(meetupId),
+    _id: new ObjectId(meetupId),
   });
 
   client.close();
@@ -59,11 +62,11 @@ export const getStaticProps = async (context) => {
   return {
     props: {
       meetupData: {
-        id: selectedMeetup._id.toString(),
-        title: selectedMeetup.title,
-        address: selectedMeetup.address,
-        image: selectedMeetup.image,
-        description: selectedMeetup.description,
+        id: selectedMeetup?._id.toString(),
+        title: selectedMeetup?.title,
+        address: selectedMeetup?.address,
+        image: selectedMeetup?.image,
+        description: selectedMeetup?.description,
       },
     },
   };

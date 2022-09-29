@@ -1,7 +1,12 @@
+import React, { ReactNode } from 'react'
 import MainNavigation from "./MainNavigation";
 import classes from "./Layout.module.css";
 
-function Layout(props) {
+type LayoutProps = {
+  children?: ReactNode
+}
+
+function Layout(props: LayoutProps) {
   return (
     <div>
       <MainNavigation />

@@ -10,8 +10,8 @@
   "dependencies": {
     "@egjs/grid": "^1.11.1",
     "mongodb": "^4.7.0",
-    "next": "10.0.6",
-    "react": "17.0.1",
-    "react-dom": "17.0.1"
+    "next": "^12.3.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   }
 }

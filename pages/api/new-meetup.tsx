@@ -1,6 +1,7 @@
+import type { NextApiRequest, NextApiResponse } from 'next'
 import { MongoClient } from "mongodb";
 
-const handler = async (req, res) => {
+const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === "POST") {
     const data = req.body;
     // const { title, image, address, description } = data;

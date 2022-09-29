@@ -7,7 +7,7 @@ import NewMeetupForm from "../../components/meetups/NewMeetupForm";
 const NewMeetupPage = () => {
   const router = useRouter();
 
-  const addMeetupHandler = async (enteredMeetupData) => {
+  const addMeetupHandler = async (enteredMeetupData: any) => {
     // console.log(enteredMeetupData);
 
     const response = await fetch("/api/new-meetup", {
@@ -31,7 +31,7 @@ const NewMeetupPage = () => {
           content="Add your own meetups and create amazing networking opportunities"
         />
       </Head>
-      <NewMeetupForm onAddMeetup={addMeetupHandler} />
+      <NewMeetupForm onAddMeetup={addMeetupHandler} image={""} title={""} address={""} />
     </Fragment>
   );
 };

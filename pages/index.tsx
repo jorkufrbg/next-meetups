@@ -4,7 +4,11 @@ import { MongoClient } from "mongodb";
 
 import MeetupList from "../components/meetups/MeetupList";
 
-const HomePage = (props) => {
+type HomePageProps = {
+  meetups: { id: string; image: string; title: string; address: string; }[];
+}
+
+const HomePage = (props: HomePageProps) => {
   return (
     <Fragment>
       <Head>
